@@ -1,0 +1,80 @@
+.header {
+  height: 60px;
+  padding: 0 1em;
+  display: flex;
+  align-items: center;
+  background-color: #131921;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  &__logo {
+    width: 100px;
+    object-fit: contain;
+    margin-top: 1.125em;
+    margin-right: 1.225em;
+  }
+
+  &__search {
+    min-height: 60px;
+    margin-right: 1em;
+    display: flex;
+    flex: 1;
+    border-radius: 1.5em;
+    align-items: center;
+  &-input {
+    width: 100%;
+    padding: 1em;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    
+    &:focus {
+      outline: none;
+    }
+  }
+
+    &-icon {
+      width: auto;
+      max-height: 24px;
+      padding: 9px;
+      background-color: #febd69;
+      border-radius: 0px 6px 6px 0px;
+      cursor: pointer;
+      &:hover {
+      background-color: #cd9042;
+      }
+    }
+
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-evenly;
+
+    &-option {
+      display: flex;
+      flex-direction: column;
+      margin: 0 .625em;
+      color: #eee;
+
+      &-lineOne {
+        font-size: .75rem;
+      }
+
+      &-lineTwo {
+        font-size: .875rem;
+        font-weight: 800;
+      }
+    }
+    &-optionBasket {
+      display: flex;
+      align-items: center;
+      color: #eee;
+      &--count {
+        margin-right: .425em;
+        margin-left: .425em;
+      }
+    }
+  }
+
+}
