@@ -34,6 +34,7 @@ module.exports = {
         brackectSpacing: true,
         arrowParens: 'avoid',
         printWidth: 100,
+        quoteProps: 'never',
       },
     ],
     'import/order': [
