@@ -13,8 +13,8 @@ export const ListOfCheckoutProduct: React.FC = () => {
   return basket.length !== 0 ? (
     <>
       <h2 className='checkout__left-title'>Your shopping Basket</h2>
-      {basket.map(item => (
-        <CheckoutProduct key={item.id} {...item} dispatch={dispatch} />
+      {basket.map((item, index) => (
+        <CheckoutProduct key={index} {...item} dispatch={dispatch} />
       ))}
     </>
   ) : (
