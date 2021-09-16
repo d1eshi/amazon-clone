@@ -13,6 +13,7 @@
     object-fit: contain;
     margin-top: 1.125em;
     margin-right: 1.225em;
+    cursor: pointer;
   }
 
   &__search {
@@ -67,6 +68,7 @@
       }
     }
     &-optionBasket {
+      cursor: pointer;
       display: flex;
       align-items: center;
       color: #eee;

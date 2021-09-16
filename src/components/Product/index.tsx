@@ -1,4 +1,6 @@
 import React from 'react'
+
+import { useState } from '../../context/useStateProvider'
 import './style.scss'
 
 interface Props {
@@ -9,7 +11,22 @@ interface Props {
   rating: number
 }
 
-export const Product: React.FC<Props> = ({price, image, title, rating}) => {
+export const Product: React.FC<Props> = ({ price, image, title, rating, id }) => {
+  const { dispatch } = useState()
+
+  const addToBasket = () => {
+    dispatch({
+      type: '@basket/add-item',
+      payload: {
+        price,
+        image,
+        title,
+        rating,
+        id,
+      },
+    })
+  }
+
   return (
     <div className='product'>
       <div className='product__info'>
@@ -19,20 +36,18 @@ export const Product: React.FC<Props> = ({price, image, title, rating}) => {
           <strong>{price}</strong>
         </p>
         <div className='product__info-rating'>
-          {
-            Array(rating)
+          {Array(rating)
             // only optional the value of the array
             .fill(0)
-            .map((_, i) => ( 
-            <p key={i}>⭐</p> 
-            ))
-          }
+            .map((_, i) => (
+              <p key={i}>⭐</p>
+            ))}
         </div>
       </div>
 
       <img src={image} />
 
-      <button>Add to basket</button>
+      <button onClick={addToBasket}>Add to basket</button>
     </div>
   )
 }
