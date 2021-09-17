@@ -6,7 +6,7 @@ import { Link } from 'wouter'
 
 import { useState } from '../../context/useStateProvider'
 
-export const Header = () => {
+export const Header: React.FC = () => {
   const {
     state: { basket },
   } = useState()
@@ -27,10 +27,12 @@ export const Header = () => {
       </div>
 
       <div className='header__nav'>
-        <div className='header__nav-option'>
-          <span className='header__nav-option-lineOne'>Hello Guest</span>
-          <span className='header__nav-option-lineTwo'>Sign In</span>
-        </div>
+        <Link href='/login'>
+          <div className='header__nav-option'>
+            <span className='header__nav-option-lineOne'>Hello Guest</span>
+            <span className='header__nav-option-lineTwo'>Sign In</span>
+          </div>
+        </Link>
         <div className='header__nav-option'>
           <span className='header__nav-option-lineOne'>Return</span>
           <span className='header__nav-option-lineTwo'>& Orders</span>

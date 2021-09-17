@@ -52,6 +52,10 @@
     display: flex;
     justify-content: space-evenly;
 
+    &-option:nth-child(1){
+      cursor: pointer;
+    }
+
     &-option {
       display: flex;
       flex-direction: column;
