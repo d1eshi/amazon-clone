@@ -32,7 +32,7 @@ export const Header: React.FC = () => {
       </div>
 
       <div className='header__nav'>
-        <Link to={!user && '/login'}>
+        <Link to={!user ? '/login' : '/'}>
           <div className='header__nav-option' onClick={handleAuth}>
             <span className='header__nav-option-lineOne'>Hello Guest</span>
             <span className='header__nav-option-lineTwo'>{user ? 'Sign Out' : 'Sign In'}</span>
