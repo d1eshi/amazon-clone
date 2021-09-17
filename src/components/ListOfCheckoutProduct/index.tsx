@@ -20,7 +20,7 @@ export const ListOfCheckoutProduct: React.FC = () => {
   ) : (
     <>
       <h1>There are no items in your cart.</h1>
-      <Link href='/'>See products</Link>
+      <Link to='/'>See products</Link>
     </>
   )
 }

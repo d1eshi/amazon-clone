@@ -2,18 +2,23 @@ import React from 'react'
 import './style.scss'
 import { CgSearch } from 'react-icons/cg'
 import { MdShoppingBasket } from 'react-icons/md'
-import { Link } from 'wouter'
+import { Link } from 'react-router-dom'
 
 import { useState } from '../../context/useStateProvider'
+import { signOutUser } from '../../firebase/firebase.functions'
 
 export const Header: React.FC = () => {
   const {
-    state: { basket },
+    state: { basket, user },
   } = useState()
+
+  const handleAuth = () => {
+    if (user) signOutUser()
+  }
 
   return (
     <header className='header'>
-      <Link href='/'>
+      <Link to='/'>
         <img
           alt='Logo Amazon'
           className='header__logo'
@@ -27,10 +32,10 @@ export const Header: React.FC = () => {
       </div>
 
       <div className='header__nav'>
-        <Link href='/login'>
-          <div className='header__nav-option'>
+        <Link to={!user && '/login'}>
+          <div className='header__nav-option' onClick={handleAuth}>
             <span className='header__nav-option-lineOne'>Hello Guest</span>
-            <span className='header__nav-option-lineTwo'>Sign In</span>
+            <span className='header__nav-option-lineTwo'>{user ? 'Sign Out' : 'Sign In'}</span>
           </div>
         </Link>
         <div className='header__nav-option'>
@@ -41,7 +46,7 @@ export const Header: React.FC = () => {
           <span className='header__nav-option-lineOne'>Your</span>
           <span className='header__nav-option-lineTwo'>Prime</span>
         </div>
-        <Link href='/checkout'>
+        <Link to='/checkout'>
           <div className='header__nav-optionBasket'>
             <MdShoppingBasket size='1.5rem' />
             <span className='header__nav-optionBasket--count'>{basket?.length}</span>

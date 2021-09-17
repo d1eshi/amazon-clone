@@ -1,18 +1,22 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
-import { Link } from 'wouter'
+import { useHistory, Link } from 'react-router-dom'
+
+import * as firebase from '../../firebase/firebase.functions'
 import './style.scss'
 
 export const Login = () => {
+  const history = useHistory()
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
 
   const signIn = (e: { preventDefault: () => void }) => {
     e.preventDefault()
-    console.log(email, password)
+    firebase.signIn(email, password, history)
   }
   const register = (e: { preventDefault: () => void }) => {
     e.preventDefault()
-    console.log(email, password)
+    firebase.createNewUser(email, password, history)
   }
 
   return (
