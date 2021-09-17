@@ -5,4 +5,3 @@ dist-ssr
 *.local
 dist
 .env
-firebase.utils.ts
