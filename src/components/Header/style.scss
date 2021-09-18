@@ -51,6 +51,9 @@
   &__nav {
     display: flex;
     justify-content: space-evenly;
+    a {
+      text-decoration: none;
+    }
 
     &-option:nth-child(1){
       cursor: pointer;

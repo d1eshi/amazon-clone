@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { useState } from '../../context/useStateProvider'
 import './style.scss'
@@ -7,6 +8,7 @@ export const SubTotal: React.FC = () => {
   const {
     state: { basket },
   } = useState()
+  const history = useHistory()
 
   const subTotal = basket?.reduce((amount, item) => item.price + amount, 0)
   const currencyFormat = subTotal.toLocaleString('en-US', {
@@ -24,7 +26,7 @@ export const SubTotal: React.FC = () => {
           <input type='checkbox' /> This order contains a gift
         </small>
       </>
-      <button>Proceed to checkout</button>
+      <button onClick={e => history.push('/payment')}>Proceed to checkout</button>
     </div>
   )
 }

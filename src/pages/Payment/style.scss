@@ -1,0 +1,24 @@
+.payment {
+  background-color: #eee;
+  &__container {
+   > h1 {
+      text-align: center;
+      padding: .625em;
+      font-weight: 400;
+      background-color: #eaeded;
+      border-bottom: 1px solid #d3d3d3;
+    }
+  }
+  &__section {
+    display: flex;
+    padding: 1.25em;
+    margin: 0 1.25em;
+    border-bottom: 1px solid #d3d3d3;
+    h3 {
+      flex: 0.2;
+    }
+    &-address, &-items {
+      flex: 0.8;
+    }
+  }
+}

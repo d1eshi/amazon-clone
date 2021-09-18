@@ -7,7 +7,7 @@ interface Props {
   title: string
   price: number
   rating: number
-  dispatch(action: any): void
+  dispatch: (action: any) => void
 }
 export const CheckoutProduct: React.FC<Props> = ({ id, image, title, price, rating, dispatch }) => {
   const handleRemoveBasket = () => {
