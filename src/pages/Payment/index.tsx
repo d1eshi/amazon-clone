@@ -1,11 +1,11 @@
 import React from 'react'
 import './style.scss'
-
 import { Link } from 'react-router-dom'
 
 import { Header } from '../../components/Header'
 import { useState } from '../../context/useStateProvider'
 import { CheckoutProduct } from '../../components/CheckoutProduct'
+import { Stripe } from '../../components/Stripe'
 
 export const Payment = () => {
   const {
@@ -44,7 +44,7 @@ export const Payment = () => {
           <section className='payment__section'>
             <h3>Payment Method</h3>
             <div className='payment__section-details'>
-              <h1>stripe</h1>
+              <Stripe basket={basket} />
             </div>
           </section>
         </div>
