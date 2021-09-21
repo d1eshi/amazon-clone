@@ -4,12 +4,15 @@ import moment from 'moment'
 import './style.scss'
 import { CheckoutProduct } from '../CheckoutProduct'
 
+type OrderObject = { data: { amount: number; basket: []; created: number }; id: string }
+
 interface Props {
-  order: any
+  order: OrderObject
 }
 
 export const Order: React.FC<Props> = ({ order }) => {
-  console.log('soy la orden', order)
+  console.log(typeof order)
+
   const { id, data } = order
   const amount = data.amount / 100
   const currencyFormat = amount.toLocaleString('en-US', {

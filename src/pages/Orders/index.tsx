@@ -13,20 +13,14 @@ export const Orders = () => {
     data: any
   }
 
-  const [orders, setOrders] = React.useState<Order>()
-
-  console.log('orders: ', orders)
+  const [orders, setOrders] = React.useState<Array<Order>>([])
 
   const {
     state: { user },
   } = useState()
 
   async function getOrders() {
-    console.log('before user')
-
     if (user) {
-      console.log('after user')
-
       const uid = user?.uid
       const first = collection(db, 'users')
       const second = doc(first, uid)
@@ -35,11 +29,7 @@ export const Orders = () => {
         snapshot.forEach(
           doc => {
             setOrders(prevState => {
-              return {
-                ...prevState,
-                id: doc.id,
-                data: doc.data().data,
-              }
+              return [...prevState, { id: doc.id, data: doc.data().data }]
             })
           },
 
@@ -53,6 +43,7 @@ export const Orders = () => {
 
   React.useEffect(() => {
     getOrders()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
   return (
@@ -61,7 +52,9 @@ export const Orders = () => {
       <div className='orders'>
         <h1>Your Orders</h1>
         <div className='orders__container'>
-          {orders && <Order key={orders.id} order={orders} />}
+          {orders.map((element, index) => {
+            return <Order key={index} order={element} />
+          })}
         </div>
       </div>
     </>
