@@ -14,7 +14,7 @@ import { Success } from './pages/Success'
 
 const apiKey: string = import.meta.env.STRIPE_PUBLIC_KEY || 'hola'
 
-const stripePromise = loadStripe(apiKey)
+const stripePromise = loadStripe(apiKey.toString())
 
 const App: React.FC = () => {
   const { dispatch } = useState()
