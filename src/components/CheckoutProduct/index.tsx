@@ -8,8 +8,17 @@ interface Props {
   price: number
   rating: number
   dispatch: (action: any) => void
+  button: boolean
 }
-export const CheckoutProduct: React.FC<Props> = ({ id, image, title, price, rating, dispatch }) => {
+export const CheckoutProduct: React.FC<Props> = ({
+  id,
+  image,
+  title,
+  price,
+  rating,
+  dispatch,
+  button = true,
+}) => {
   const handleRemoveBasket = () => {
     dispatch({
       type: '@basket/remove-item',
@@ -35,7 +44,7 @@ export const CheckoutProduct: React.FC<Props> = ({ id, image, title, price, rati
               <p key={i}>⭐</p>
             ))}
         </div>
-        <button onClick={handleRemoveBasket}>Remove from Basket</button>
+        {button && <button onClick={handleRemoveBasket}>Remove from Basket</button>}
       </div>
     </div>
   )

@@ -1,0 +1,16 @@
+.order {
+  padding: 2.5em;
+  margin: 1.25em 0;
+  border: 1px solid #d3d3d3;
+  background-color: #eee;
+  position: relative;
+  &__id {
+    position: absolute;
+    top: 2.5em;
+    right: 1.25em;
+  }
+  &__total {
+    font-weight: 600;
+    text-align: right;
+  }
+}

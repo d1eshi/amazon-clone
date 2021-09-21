@@ -38,10 +38,12 @@ export const Header: React.FC = () => {
             <span className='header__nav-option-lineTwo'>{user ? 'Sign Out' : 'Sign In'}</span>
           </div>
         </Link>
-        <div className='header__nav-option'>
-          <span className='header__nav-option-lineOne'>Return</span>
-          <span className='header__nav-option-lineTwo'>& Orders</span>
-        </div>
+        <Link to='/orders'>
+          <div className='header__nav-option'>
+            <span className='header__nav-option-lineOne'>Return</span>
+            <span className='header__nav-option-lineTwo'>& Orders</span>
+          </div>
+        </Link>
         <div className='header__nav-option'>
           <span className='header__nav-option-lineOne'>Your</span>
           <span className='header__nav-option-lineTwo'>Prime</span>

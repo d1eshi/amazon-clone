@@ -1,0 +1,10 @@
+.orders {
+  padding: 1.25em 5em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  > h1 {
+    margin: 1.275em 0;
+    text-align: left;
+  }
+}

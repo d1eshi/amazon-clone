@@ -85,7 +85,7 @@ export const Stripe: React.FC<Props> = ({ basket, dispatch }) => {
             type: '@basket/clear-basket',
           })
 
-          history.replace('/success')
+          history.replace('/orders')
         })
     }
   }

@@ -11,6 +11,7 @@ import { Payment } from './pages/Payment'
 import { useState } from './context/useStateProvider'
 import { userState } from './firebase/firebase.functions'
 import { Success } from './pages/Success'
+import { Orders } from './pages/Orders'
 
 const App: React.FC = () => {
   const { dispatch } = useState()
@@ -27,6 +28,8 @@ const App: React.FC = () => {
           <Route component={Checkout} path='/checkout' />
           <Route component={Login} path='/login' />
           <Route component={Success} path='/success' />
+          <Route component={Orders} path='/orders' />
+
           <Elements
             stripe={loadStripe(
               'pk_test_51JasY1KNsjFHlkwIgApkIq6oSXZ0kDTqAkZaoMDL8PV6jXmgQTUfFkgkpOceC8LnitC8hLundJIlMa4FCZpq4bO800dfPzgGz2'
