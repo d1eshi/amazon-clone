@@ -12,7 +12,7 @@ import { useState } from './context/useStateProvider'
 import { userState } from './firebase/firebase.functions'
 import { Success } from './pages/Success'
 
-const apiKey: string = import.meta.env.VITE_STRIPE_PBLIC_KEY
+const apiKey: string = import.meta.env.VITE_STRIPE_PUBLIC_KEY || 'hola'
 
 const stripePromise = loadStripe(apiKey)
 
