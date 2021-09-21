@@ -5,6 +5,7 @@ dist-ssr
 *.local
 dist
 .env
+.env.loca
 .firebaserc
 .firebase.json
 functions
