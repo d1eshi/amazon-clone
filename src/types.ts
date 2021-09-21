@@ -3,6 +3,7 @@ import React from 'react'
 type Action =
   | { type: '@basket/add-item'; payload: Item }
   | { type: '@basket/remove-item'; payload: string }
+  | { type: '@basket/clear-basket' }
   | { type: '@user/set-state'; payload: any }
   | { type: undefined; payload: undefined }
 type Item = { id: string; title: string; price: number; rating: number; image: string }

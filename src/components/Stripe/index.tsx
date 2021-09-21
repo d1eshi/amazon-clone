@@ -1,19 +1,26 @@
 import React from 'react'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
+import { collection, doc, setDoc } from '@firebase/firestore'
 import { useHistory } from 'react-router-dom'
 
-import { Item } from '../../types'
+import { Item, Dispatch } from '../../types'
+import { db } from '../../firebase/firebase'
+import { useState } from '../../context/useStateProvider'
 
 import { instance as axios } from './axios'
 
 interface Props {
   basket: Item[]
+  dispatch: Dispatch
 }
 
-export const Stripe: React.FC<Props> = ({ basket }) => {
+export const Stripe: React.FC<Props> = ({ basket, dispatch }) => {
   const stripe = useStripe()
   const elements = useElements()
   const history = useHistory()
+  const {
+    state: { user },
+  } = useState()
 
   const [clientSecret, setClientSecret] = React.useState('')
 
@@ -33,6 +40,8 @@ export const Stripe: React.FC<Props> = ({ basket }) => {
     event.preventDefault()
     setProcessing(true)
 
+    // let cardElemet
+
     // eslint-disable-next-line no-useless-return
     if (!stripe || !elements) {
       // Stripe.js has not loaded yet. Make sure to disable
@@ -41,21 +50,44 @@ export const Stripe: React.FC<Props> = ({ basket }) => {
     }
     const cardElement = elements.getElement(CardElement)
 
-    // eslint-disable-next-line no-unused-vars
-    const payload = await stripe
-      .confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: cardElement,
-        },
-      })
-      .then(({ paymentIntent }) => {
-        // paymentIntent = payment confirmation
-        console.log({ paymentIntent })
-        setSuccess(true)
-        setError(null)
-        setProcessing(false)
-        history.replace('/orders')
-      })
+    if (cardElement) {
+      // eslint-disable-next-line no-unused-vars
+      const payload = await stripe
+        .confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: cardElement,
+          },
+        })
+        .then(async ({ paymentIntent = {} }) => {
+          // paymentIntent = payment confirmation
+          const data = {
+            basket: basket,
+            amount: paymentIntent.amount || 0,
+            created: paymentIntent.created || new Date(),
+          }
+
+          const uid = user?.uid || ''
+          const id = paymentIntent.id || ''
+
+          const collectionUsers = collection(db, 'users')
+          const userIdRef = doc(collectionUsers, uid)
+
+          await setDoc(doc(userIdRef, 'orders', id), {
+            data,
+          })
+
+          setError(null)
+
+          setProcessing(false)
+          setSuccess(true)
+
+          dispatch({
+            type: '@basket/clear-basket',
+          })
+
+          history.replace('/success')
+        })
+    }
   }
 
   const handleChange = (event: any) => {
@@ -67,19 +99,19 @@ export const Stripe: React.FC<Props> = ({ basket }) => {
 
   React.useEffect(() => {
     // Generate the especial Stripe token
+    const sub = subTotal * 100
     const getClientSecret = async () => {
       const response = await axios({
         method: 'post',
-        url: `/payments/create?total=${subTotal * 100}`,
+        url: `/payments/create?total=${parseInt(sub.toString())}`,
       })
 
       setClientSecret(response.data.clientSecret)
     }
 
     getClientSecret()
-  }, [subTotal])
-
-  console.log('client secret is: ', clientSecret)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <form onSubmit={handleSubmit}>

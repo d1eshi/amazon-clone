@@ -8,8 +8,10 @@ import { Home } from './pages/Home'
 import { Checkout } from './pages/Checkout'
 import { Login } from './pages/Login'
 import { Payment } from './pages/Payment'
+import { Orders } from './pages/Orders'
 import { useState } from './context/useStateProvider'
 import { userState } from './firebase/firebase.functions'
+import { Success } from './pages/Success'
 
 const apiKey: string = import.meta.env.VITE_STRIPE_PUBLIC_KEY
 const stripePromise = loadStripe(apiKey)
@@ -28,6 +30,7 @@ const App: React.FC = () => {
           <Route exact component={Home} path='/' />
           <Route component={Checkout} path='/checkout' />
           <Route component={Login} path='/login' />
+          <Route component={Success} path='/success' />
           <Elements stripe={stripePromise}>
             <Route component={Payment} path='/payment' />
           </Elements>

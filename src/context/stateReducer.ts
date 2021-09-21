@@ -20,6 +20,9 @@ export function stateReducer(state: type.State, action: type.Action): type.State
       return { ...state, basket: newBasket }
     }
 
+    case '@basket/clear-basket':
+      return { ...state, basket: [] }
+
     case '@user/set-state':
       return { ...state, user: action.payload }
 

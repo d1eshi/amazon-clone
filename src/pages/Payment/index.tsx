@@ -44,7 +44,7 @@ export const Payment = () => {
           <section className='payment__section'>
             <h3>Payment Method</h3>
             <div className='payment__section-details'>
-              <Stripe basket={basket} />
+              <Stripe basket={basket} dispatch={dispatch} />
             </div>
           </section>
         </div>
