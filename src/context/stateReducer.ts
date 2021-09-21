@@ -1,8 +1,6 @@
 import * as type from '../types'
 
 export function stateReducer(state: type.State, action: type.Action): type.State {
-  console.log('payload >>> ', action.payload)
-
   switch (action.type) {
     case '@basket/add-item':
       return {
