@@ -12,8 +12,6 @@ import { useState } from './context/useStateProvider'
 import { userState } from './firebase/firebase.functions'
 import { Success } from './pages/Success'
 
-const apiKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY
-
 const App: React.FC = () => {
   const { dispatch } = useState()
 
