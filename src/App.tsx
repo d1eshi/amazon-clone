@@ -12,11 +12,7 @@ import { useState } from './context/useStateProvider'
 import { userState } from './firebase/firebase.functions'
 import { Success } from './pages/Success'
 
-const apiKey: string = import.meta.env.VITE_STRIPE_PUBLIC_KEY
-
-console.log('hey', apiKey)
-
-const stripePromise = loadStripe(apiKey.toString())
+const apiKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY
 
 const App: React.FC = () => {
   const { dispatch } = useState()
@@ -33,7 +29,7 @@ const App: React.FC = () => {
           <Route component={Checkout} path='/checkout' />
           <Route component={Login} path='/login' />
           <Route component={Success} path='/success' />
-          <Elements stripe={stripePromise}>
+          <Elements stripe={loadStripe(apiKey)}>
             <Route component={Payment} path='/payment' />
           </Elements>
         </Switch>
