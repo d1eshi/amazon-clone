@@ -38,8 +38,6 @@ export const signIn = (email: string, password: any, history: History) => {
 
 export const userState = (dispatch: type.Dispatch) =>
   onAuthStateChanged(auth, user => {
-    console.log('the user is >>>', user)
-
     if (user) {
       // User is signed in.
       dispatch({ type: '@user/set-state', payload: user })

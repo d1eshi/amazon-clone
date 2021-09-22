@@ -36,7 +36,7 @@ export const Payment = () => {
 
             <div className='payment__section-items'>
               {basket?.map((item, index) => (
-                <CheckoutProduct key={index} {...item} dispatch={dispatch} />
+                <CheckoutProduct key={index} button={false} {...item} dispatch={dispatch} />
               ))}
             </div>
           </section>

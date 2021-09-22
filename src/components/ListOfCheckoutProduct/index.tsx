@@ -1,12 +1,12 @@
 import React from 'react'
-import { Link } from 'wouter'
 
 import { CheckoutProduct } from '../CheckoutProduct'
 import { useState } from '../../context/useStateProvider'
+import { ErrorCart } from '../Errors'
 
 export const ListOfCheckoutProduct: React.FC = () => {
   const {
-    state: { basket },
+    state: { basket, user },
     dispatch,
   } = useState()
 
@@ -19,8 +19,7 @@ export const ListOfCheckoutProduct: React.FC = () => {
     </>
   ) : (
     <>
-      <h1>There are no items in your cart.</h1>
-      <Link to='/'>See products</Link>
+      <ErrorCart noLogin={Boolean(!user)} />
     </>
   )
 }

@@ -11,9 +11,7 @@ import { Payment } from './pages/Payment'
 import { useState } from './context/useStateProvider'
 import { userState } from './firebase/firebase.functions'
 import { Success } from './pages/Success'
-
-const apiKey: string = process.env.VITE_STRIPE_PUBLIC_KEY || ''
-const stripePromise = loadStripe(apiKey)
+import { Orders } from './pages/Orders'
 
 const App: React.FC = () => {
   const { dispatch } = useState()
@@ -30,7 +28,13 @@ const App: React.FC = () => {
           <Route component={Checkout} path='/checkout' />
           <Route component={Login} path='/login' />
           <Route component={Success} path='/success' />
-          <Elements stripe={stripePromise}>
+          <Route component={Orders} path='/orders' />
+
+          <Elements
+            stripe={loadStripe(
+              'pk_test_51JasY1KNsjFHlkwIgApkIq6oSXZ0kDTqAkZaoMDL8PV6jXmgQTUfFkgkpOceC8LnitC8hLundJIlMa4FCZpq4bO800dfPzgGz2'
+            )}
+          >
             <Route component={Payment} path='/payment' />
           </Elements>
         </Switch>

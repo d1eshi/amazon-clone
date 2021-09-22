@@ -85,7 +85,7 @@ export const Stripe: React.FC<Props> = ({ basket, dispatch }) => {
             type: '@basket/clear-basket',
           })
 
-          history.replace('/success')
+          history.replace('/orders')
         })
     }
   }
@@ -118,7 +118,7 @@ export const Stripe: React.FC<Props> = ({ basket, dispatch }) => {
       <CardElement onChange={handleChange} />
       <div>
         <h3>Order Total: {currencyFormat}</h3>
-        <button disabled={processing || disabled || success}>
+        <button className='btn-primary' disabled={processing || disabled || success}>
           <span>{processing ? 'Processing' : 'Buy Now  '}</span>
         </button>
       </div>

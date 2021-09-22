@@ -15,10 +15,16 @@
     margin: 0 1.25em;
     border-bottom: 1px solid #d3d3d3;
     h3 {
+      margin: 1em 0;
       flex: 0.2;
     }
     &-address, &-items, &-details {
       flex: 0.8;
+    }
+    &-details {
+      > form {
+        max-width: 400px;
+      }
     }
   }
 }
