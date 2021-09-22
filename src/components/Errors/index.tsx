@@ -6,8 +6,6 @@ interface propsCart {
   noLogin: boolean
 }
 export const ErrorCart: React.FC<propsCart> = ({ noLogin }) => {
-  console.log(noLogin)
-
   return (
     <div className='error-cart'>
       <h1>Your Amazon Cart is empty</h1>

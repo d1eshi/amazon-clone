@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 import { CheckoutProduct } from '../CheckoutProduct'
 import { useState } from '../../context/useStateProvider'
@@ -10,16 +9,6 @@ export const ListOfCheckoutProduct: React.FC = () => {
     state: { basket, user },
     dispatch,
   } = useState()
-
-  // if (!user) {
-  //   return (
-  //     <>
-  //       <h1>Your Amazon Cart is empty</h1>
-  //       <Link to='/login'>Sign in to your account</Link>
-  //       <Link to='/login'>Sign up now</Link>
-  //     </>
-  //   )
-  // }
 
   return basket.length !== 0 ? (
     <>
