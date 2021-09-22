@@ -1,0 +1,19 @@
+.error-cart {
+  h1 {
+    margin-bottom: 1em;
+  }
+  a { 
+    color: #0F1111;
+    font-size: 1rem;
+    padding: .5em .6875em;
+    border-radius: 8px;
+    &:nth-child(2) {
+      margin-right: .25em;
+    border-color: #FCD200;  
+    background: #FFD814;
+    }
+    &:hover {
+      box-shadow: #e0bd0b 0px 0px 0px 1px;
+    }
+  }
+}

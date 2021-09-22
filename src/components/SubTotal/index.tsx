@@ -15,18 +15,25 @@ export const SubTotal: React.FC = () => {
     style: 'currency',
     currency: 'USD',
   })
+  const basketLength = basket?.length
 
   return (
     <div className='subtotal'>
       <>
         <p>
-          Subtotal ({basket.length} items): <strong>{currencyFormat}</strong>
+          Subtotal ({basketLength} items): <strong>{currencyFormat}</strong>
         </p>
         <small className='subtotal__gift'>
           <input type='checkbox' /> This order contains a gift
         </small>
       </>
-      <button onClick={e => history.push('/payment')}>Proceed to checkout</button>
+      <button
+        className='btn-primary'
+        disabled={basketLength <= 0 ? true : undefined}
+        onClick={e => history.push('/payment')}
+      >
+        Proceed to checkout
+      </button>
     </div>
   )
 }

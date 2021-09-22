@@ -8,7 +8,7 @@ interface Props {
   price: number
   rating: number
   dispatch: (action: any) => void
-  button: boolean
+  button?: boolean
 }
 export const CheckoutProduct: React.FC<Props> = ({
   id,
